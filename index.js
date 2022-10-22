@@ -44,8 +44,20 @@ app.get('/:col/:api', async (req, res) => {
   
   if (api !== process.env.MDP) return
   
-  console.log(`list collection: ${col} with params: ${JSON.stringify(req.params)}`)
   const items = await db.collection(col).list()
+  console.log(JSON.stringify(items, null, 2))
+  res.json(items).end()
+})
+
+// Get a full listing
+app.get('/:col/:key/:api', async (req, res) => {
+  const col = req.params.col
+  const key = req.params.key
+  const api = req.params.api
+  
+  if (api !== process.env.MDP) return
+  
+  const items = await db.collection(col).get(key)
   console.log(JSON.stringify(items, null, 2))
   res.json(items).end()
 })
