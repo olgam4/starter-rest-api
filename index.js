@@ -44,11 +44,11 @@ app.get('/:col/:api', async (req, res) => {
   
   if (api !== process.env.MDP) return
   
-  const item = await db.collection(col).list()
+  const items = await db.collection(col).list()
   const emails = []
-  console.log(item.results)
+  console.log(items.results)
 
-  for (const item in item.results) {
+  for (const item in items.results) {
     console.log(item)
     // emails.push(await db.collection(col).get(item.key))
   }
