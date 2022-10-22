@@ -57,8 +57,7 @@ app.get('/:col/:api', async (req, res) => {
     return value.props.email
   })
 
-  const emailsSet = new Set(emails.filter(val => val != null)).values().map(val => val)
-
+  const emailsSet = Array.of(new Set(emails.filter(val => val != null)).values())
 
   console.log(emailsSet)
 
