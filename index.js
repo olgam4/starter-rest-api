@@ -50,7 +50,7 @@ app.get('/:col/:api', async (req, res) => {
 
   items.results.forEach(async value => {
     console.log(value)
-    //emails.push(await db.collection(col).get(item.key))
+    emails.push(await db.collection(col).get(value.key))
   })
   res.json(emails).end()
 })
