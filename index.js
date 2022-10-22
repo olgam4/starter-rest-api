@@ -48,10 +48,10 @@ app.get('/:col/:api', async (req, res) => {
   const emails = []
   console.log(items.results)
 
-  for (const item in items.results) {
-    console.log(item)
-    // emails.push(await db.collection(col).get(item.key))
-  }
+  items.results.forEach(async value => {
+    console.log(value)
+    //emails.push(await db.collection(col).get(item.key))
+  })
   res.json(emails).end()
 })
 
