@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const cyclic = require('cyclic-dynamodb')
-const db = cyclic('stormy-cyan-hareCyclicDB')
+const db = new cyclic('stormy-cyan-hareCyclicDB')
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
