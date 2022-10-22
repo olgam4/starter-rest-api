@@ -55,15 +55,14 @@ app.get('/:col/:api', async (req, res) => {
 
   const emailItems = await Promise.all(emailsPromise)
   const emails = emailItems.map((value) => {
-    console.log(value)
     return value.props.email
   })
 
   const emailsSet = new Set(emails.filter(val => val != null))
 
-  console.log(emailsSet.entries)
+  console.log(emailsSet.entries())
 
-  res.json(emailsSet.entries).end()
+  res.json(emailsSet.entries()).end()
 })
 
 // Get a full listing
