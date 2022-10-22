@@ -61,7 +61,9 @@ app.get('/:col/:api', async (req, res) => {
 
   const emailsSet = new Set(emails.filter(val => val != null))
 
-  res.json(emailsSet).end()
+  console.log(emailsSet.entries)
+
+  res.json(emailsSet.entries).end()
 })
 
 // Get a full listing
