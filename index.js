@@ -61,6 +61,7 @@ app.get('/:col/:api', async (req, res) => {
 
   const finalEmails = []
   for (const se in emailsSet) {
+    console.log(se)
     finalEmails.push(se)
   }
   res.json(finalEmails).end()
