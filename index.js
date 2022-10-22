@@ -46,7 +46,6 @@ app.get('/:col/:api', async (req, res) => {
   
   const items = await db.collection(col).list()
   const emailsPromise = []
-  console.log(items.results)
 
   items.results.forEach(value => {
     const prom = db.collection(col).get(value.key)
@@ -62,7 +61,7 @@ app.get('/:col/:api', async (req, res) => {
 
   console.log(emailsSet.entries())
 
-  res.json(emailsSet.entries()).end()
+  res.json(emailsSet.keys()).end()
 })
 
 // Get a full listing
