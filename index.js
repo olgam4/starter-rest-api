@@ -48,6 +48,7 @@ app.get('/:col/:api', async (req, res) => {
   const emails = []
 
   for (const item in results) {
+    console.log(item)
     emails.push(await db.collection(col).get(item.key))
   }
   res.json(emails).end()
