@@ -25,9 +25,16 @@ app.post('/:col', async (req, res) => {
   const col = req.params.col
   const api = req.body.api
   
-  if (api !== process.env.MDP) res.json('woop').end()
+  console.log(col, api)
   
-  const item = await db.collection(col).set(Math.random(0, 100).toString(), req.body)
+  if (api !== process.env.MDP) {
+     res.json('woop').end()
+  }
+  
+  const id = Math.random(0, 100).toString()
+  
+  const item = await db.collection(col).set(id, req.body.email)
+  
   console.log(JSON.stringify(item, null, 2))
   res.json(item).end()
 })
