@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
-const cyclic = require('cyclic-dynamodb')
-const db = new cyclic('stormy-cyan-hareCyclicDB')
+const Cyclic = require('cyclic-dynamodb')
+const db = Cyclic('stormy-cyan-hareCyclicDB')
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -24,8 +24,6 @@ app.use(express.urlencoded({ extended: true }))
 app.post('/:col', async (req, res) => {
   const col = req.params.col
   const api = req.body.api
-
-  console.log(db)
   
   if (api !== process.env.MDP) {
      res.json('woop').end()
