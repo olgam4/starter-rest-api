@@ -44,7 +44,7 @@ app.get('/:col/:api', async (req, res) => {
   
   if (api !== process.env.MDP) return
   
-  const items = await db.collection(col).fragment('email').list()
+  const items = await db.collection(col).list().fragment('email')
   console.log(JSON.stringify(items, null, 2))
   res.json(items).end()
 })
