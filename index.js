@@ -45,13 +45,20 @@ app.get('/:col/:api', async (req, res) => {
   if (api !== process.env.MDP) return
   
   const items = await db.collection(col).list()
-  const emails = []
+  const emailsPromise = []
   console.log(items.results)
 
-  items.results.forEach(async value => {
-    console.log(value)
-    emails.push(await db.collection(col).get(value.key))
+  items.results.forEach(value => {
+    const prom = db.collection(col).get(value.key)
+    emailsPromise.push(prom)
   })
+
+  const emailItems = await Promise.all(emailsPromise)
+  const emails = emailItems.map((value) => {
+    console.log(value)
+    return value
+  })
+
   res.json(emails).end()
 })
 
