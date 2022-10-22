@@ -31,7 +31,7 @@ app.post('/:col', async (req, res) => {
   
   const id = Math.random(0, 100).toString()
   
-  const item = await db.collection(col).set(id, req.body.email)
+  const item = await db.collection(col).set(id, { email: req.body.email })
   
   console.log(JSON.stringify(item, null, 2))
   res.json(item).end()
