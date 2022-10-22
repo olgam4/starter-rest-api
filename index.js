@@ -44,9 +44,13 @@ app.get('/:col/:api', async (req, res) => {
   
   if (api !== process.env.MDP) return
   
-  const items = await db.collection(col).list().fragment('email')
-  console.log(JSON.stringify(items, null, 2))
-  res.json(items).end()
+  const items = await db.collection(col).list()
+  const emails = []
+  for (const item in items) {
+    console.log(item)
+    emails.push(await db.collection(col).get(item.id))
+  }
+  res.json(emails).end()
 })
 
 // Get a full listing
