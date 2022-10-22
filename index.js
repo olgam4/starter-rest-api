@@ -27,7 +27,7 @@ app.post('/:col', async (req, res) => {
   
   if (api !== process.env.MDP) res.json('woop').end()
   
-  const item = await db.collection(col).set(Math.random(0, 100), req.body)
+  const item = await db.collection(col).set(Math.random(0, 100).toString(), req.body)
   console.log(JSON.stringify(item, null, 2))
   res.json(item).end()
 })
