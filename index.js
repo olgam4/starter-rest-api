@@ -27,6 +27,8 @@ app.post('/:col/:key/:api', async (req, res) => {
   const key = req.params.key
   const api = req.params.api
   
+  console.log(api)
+  
   if (api !== process.env.MDP) return
   
   console.log(`from collection: ${col} delete key: ${key} with params ${JSON.stringify(req.params)}`)
