@@ -22,11 +22,10 @@ app.use(express.urlencoded({ extended: true }))
 
 // Create or Update an item
 app.post('/:col', async (req, res) => {
-
   const col = req.params.col
   const api = req.body.api
-  
-  console.log(col, api)
+
+  console.log(db)
   
   if (api !== process.env.MDP) {
      res.json('woop').end()
