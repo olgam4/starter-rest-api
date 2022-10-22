@@ -56,7 +56,7 @@ app.get('/:col/:api', async (req, res) => {
   const emailItems = await Promise.all(emailsPromise)
   const emails = emailItems.map((value) => {
     console.log(value)
-    return value
+    return value.props.email
   })
 
   res.json(emails).end()
