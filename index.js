@@ -59,7 +59,9 @@ app.get('/:col/:api', async (req, res) => {
     return value.props.email
   })
 
-  res.json(emails).end()
+  const emailsSet = new Set(emails.filter(val => val != null))
+
+  res.json(emailsSet).end()
 })
 
 // Get a full listing
